@@ -1,0 +1,4 @@
+http://diveintohtml5.info/
+http://www.w3schools.com/jsref/jsref_random.asp
+http://www.w3schools.com/js/js_object_prototypes.asp
+http://www.w3schools.com/js/js_objects.asp
