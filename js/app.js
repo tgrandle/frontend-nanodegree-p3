@@ -1,21 +1,24 @@
+/* this file contains the app logic
+* and has been updated by Trevor Grandle
+* for the Udacity nanodegree P3
+*/
+
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function () {
 
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+  // Variables applied to each of our instances go here,
+  // we've provided one for you to get started
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
-  // this.x = -101;
-  // this.y = -25;
- 
-  var speed;    
+  // The image/sprite for our enemies, this uses
+  // a helper we've provided to easily load images
+  this.sprite = 'images/enemy-bug.png';
+
+  var speed;
 }
-Enemy.prototype.init = function(){
+Enemy.prototype.init = function () {
   //random number between 1 and 100
   this.speed = Math.floor((Math.random() * 100) + 1);
-  console.log('enemy speed is ' + this.speed);   
+  console.log('enemy speed is ' + this.speed);
 
   this.x = -101;
 
@@ -23,7 +26,7 @@ Enemy.prototype.init = function(){
   //random number between 0 and 5
   var newX = Math.floor(Math.random() * 5);
   this.y = newX * YSIZE - 25;
-  console.log('enemy y is ' + this.y);   
+  console.log('enemy y is ' + this.y);
   console.log('enemy x is ' + this.x);
   console.log(YSIZE + " : " + XSIZE);
 }
@@ -64,7 +67,7 @@ Player.prototype.init = function(){
   this.x = 2 * XSIZE
   this.y = -25 + (5 * YSIZE);    
 
-  console.log('player y is ' + this.y);   
+  console.log('player y is ' + this.y);
   console.log('player x is ' + this.x);
   console.log(YSIZE + " : " + XSIZE);
 }
