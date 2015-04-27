@@ -24,7 +24,7 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['jshint']
+        tasks: ['jshint','jscs']
       }
     },
 
@@ -41,6 +41,14 @@ module.exports = function (grunt) {
         '<%= config.app %>/js/app.js'
       ]
     },
+
+    jscs: {
+      src: '<%= config.app %>/js/app.js',
+      options: {
+          config: '.jscsrc',
+          requireCurlyBraces: [ 'if' ]
+      }
+    }
   });
 
   grunt.registerTask('build', [
@@ -49,6 +57,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
+    'newer:jscs',
     'build'
   ]);
 };

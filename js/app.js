@@ -11,11 +11,10 @@ var YSIZE = 83;
 var XMIN = 0;
 var XMAX = 5 * this.XSIZE;
 var YMIN = -25;
-var YMAX = (6 * this.YSIZE) - 25;  
-
+var YMAX = (6 * this.YSIZE) - 25;
 
 // Enemies our player must avoid
-var Enemy = function () {
+var Enemy = function() {
   'use strict';
 
   // Variables applied to each of our instances go here,
@@ -28,7 +27,7 @@ var Enemy = function () {
   var speed;
 };
 
-Enemy.prototype.init = function () {
+Enemy.prototype.init = function() {
   'use strict';
 
   //random number between 1 and 100
@@ -51,85 +50,85 @@ Enemy.prototype.init = function () {
 Enemy.prototype.update = function(dt) {
   'use strict';
 
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+  // You should multiply any movement by the dt parameter
+  // which will ensure the game runs at the same speed for
+  // all computers.
 
-    //move across
-    this.x += (this.speed * dt);
+  //move across
+  this.x += (this.speed * dt);
 
-    //check bounds
-    //enemies only move right
-    if(this.x >= XMAX){
-      //respawn
-      this.x = -101;
-      this.init();
-    }    
+  //check bounds
+  //enemies only move right
+  if (this.x >= XMAX) {
+    //respawn
+    this.x = -101;
+    this.init();
+  }
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
   'use strict';
 
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function(){
+var Player = function() {
   'use strict';
 
-    this.sprite = 'images/char-boy.png';
+  this.sprite = 'images/char-boy.png';
   this.move = '';
 
 };
 
-Player.prototype.init = function(){
+Player.prototype.init = function() {
   'use strict';
 
-    //start in the middle of a tile
+  //start in the middle of a tile
   this.x = 2 * XSIZE;
-  this.y = -25 + (5 * YSIZE);    
+  this.y = -25 + (5 * YSIZE);
 
   console.log('player y is ' + this.y);
   console.log('player x is ' + this.x);
   console.log(YSIZE + ' : ' + XSIZE);
 };
 
-Player.prototype.update = function(){
+Player.prototype.update = function() {
   'use strict';
 
   //only move if we got a key press
-  if(this.move !== ''){
-    if(this.move === 'left'){
-        this.x += -XSIZE;
-        this.move = '';
-    }if(this.move === 'right'){
-        this.x += XSIZE;
-        this.move = '';
-    }if(this.move === 'up'){
-        this.y += -YSIZE;
-        this.move = '';
-    }if(this.move === 'down'){
-        this.y += YSIZE;
-        this.move = '';
+  if (this.move !== '') {
+    if (this.move === 'left') {
+      this.x += -XSIZE;
+      this.move = '';
+    }if (this.move === 'right') {
+      this.x += XSIZE;
+      this.move = '';
+    }if (this.move === 'up') {
+      this.y += -YSIZE;
+      this.move = '';
+    }if (this.move === 'down') {
+      this.y += YSIZE;
+      this.move = '';
     }
 
     //stop moving off the board
-    if(this.x < XMIN){
+    if (this.x < XMIN) {
       this.x = XMIN;
       console.log('bounding x to ' + this.x);
     }
-    if(this.x >= XMAX){
+    if (this.x >= XMAX) {
       this.x = XMAX - XSIZE;
       console.log('bounding x to ' + this.x);
     }
-    if(this.y < YMIN){
+    if (this.y < YMIN) {
       this.y = YMIN;
       console.log('bounding y to ' + this.y);
     }
-    if(this.y >= YMAX){
+    if (this.y >= YMAX) {
       this.y = YMAX - YSIZE;
       console.log('bounding y to ' + this.y);
     }
@@ -140,14 +139,14 @@ Player.prototype.update = function(){
 Player.prototype.render = function() {
   'use strict';
 
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 Player.prototype.handleInput = function(key) {
   'use strict';
 
-    console.log(key);
-    this.move = key;
+  console.log(key);
+  this.move = key;
 
 };
 
@@ -169,12 +168,12 @@ player.init();
 document.addEventListener('keyup', function(e) {
   'use strict';
 
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
+  var allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down'
+  };
 
-    player.handleInput(allowedKeys[e.keyCode]);
+  player.handleInput(allowedKeys[e.keyCode]);
 });
