@@ -125,8 +125,10 @@ Player.prototype.update = function() {
       console.log('bounding x to ' + this.x);
     }
     if (this.y < YMIN) {
-      this.y = YMIN;
-      console.log('bounding y to ' + this.y);
+      // this.y = YMIN;
+      // console.log('bounding y to ' + this.y);
+      this.init();
+      console.log('reached the water');
     }
     if (this.y >= YMAX) {
       this.y = YMAX - YSIZE;
