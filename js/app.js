@@ -61,7 +61,6 @@ Enemy.prototype.update = function(dt) {
   //enemies only move right
   if (this.x >= XMAX) {
     //respawn
-    this.x = -101;
     this.init();
   }
 };
@@ -104,13 +103,13 @@ Player.prototype.update = function() {
     if (this.move === 'left') {
       this.x += -XSIZE;
       this.move = '';
-    }if (this.move === 'right') {
+    }else if (this.move === 'right') {
       this.x += XSIZE;
       this.move = '';
-    }if (this.move === 'up') {
+    }else if (this.move === 'up') {
       this.y += -YSIZE;
       this.move = '';
-    }if (this.move === 'down') {
+    }else if (this.move === 'down') {
       this.y += YSIZE;
       this.move = '';
     }
@@ -119,18 +118,15 @@ Player.prototype.update = function() {
     if (this.x < XMIN) {
       this.x = XMIN;
       console.log('bounding x to ' + this.x);
-    }
-    if (this.x >= XMAX) {
+    }else if (this.x >= XMAX) {
       this.x = XMAX - XSIZE;
       console.log('bounding x to ' + this.x);
-    }
-    if (this.y < YMIN) {
+    }else if (this.y < YMIN) {
       // this.y = YMIN;
       // console.log('bounding y to ' + this.y);
       this.init();
       console.log('reached the water');
-    }
-    if (this.y >= YMAX) {
+    }else if (this.y >= YMAX) {
       this.y = YMAX - YSIZE;
       console.log('bounding y to ' + this.y);
     }
